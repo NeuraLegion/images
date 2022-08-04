@@ -9,6 +9,7 @@ services:
       # VNC GUI client port
       - 5900:5900
       - 9222:9222
+      - 9333:9333
       # Web GUI client port
       - 6080:80
     environment:

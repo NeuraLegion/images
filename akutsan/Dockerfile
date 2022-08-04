@@ -9,8 +9,10 @@ RUN apt-get update \
         dumb-init \
         fontconfig \
         tmux \
+        netcat \
         chromium-browser=${VERSION}\* \
         curl \
+        socat \
     && rm -rf /var/lib/apt/lists/* \
 
 EXPOSE 9222
@@ -18,4 +20,3 @@ ADD ./run_chromium.sh /opt/run_chromium.sh
 RUN chmod +x /opt/run_chromium.sh
 ADD chromium.desktop /etc/xdg/autostart/
 
-ENV RD_PORT=9222

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Chromium
+TryExec=/opt/run_chromium.sh
+Exec=/opt/run_chromium.sh
