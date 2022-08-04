@@ -1,10 +1,5 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc:bionic-lxqt
 
-EXPOSE 9222
-
-ADD ./run_chromium.sh /opt/run_chromium.sh
-RUN chmod +x /opt/run_chromium.sh
-
 RUN apt-get update \
     # https://github.com/phusion/baseimage-docker/issues/319
     && apt-get install --yes apt-utils 2>&1 | grep -v "debconf: delaying package configuration, since apt-utils is not installed" \
@@ -17,5 +12,10 @@ RUN apt-get update \
         chromium-browser=${VERSION}\* \
         curl \
     && rm -rf /var/lib/apt/lists/* \
+
+EXPOSE 9222
+ADD ./run_chromium.sh /opt/run_chromium.sh
+RUN chmod +x /opt/run_chromium.sh
+ADD chromium.desktop /etc/xdg/autostart/
 
 ENV RD_PORT=9222

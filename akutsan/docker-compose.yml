@@ -12,6 +12,8 @@ services:
       # Web GUI client port
       - 6080:80
     environment:
+      - DISPLAY=:1 
+      - HOME=/home/sandbox
       - VNC_PASSWORD=12345
       - HTTP_PASSWORD=12345
       - USER=sandbox
