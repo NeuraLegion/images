@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  sandbox:
+    build: .
+    volumes:
+      - ./shared:/home/sandbox/shared
+    ports:
+      # VNC GUI client port
+      - 5900:5900
+      - 9222:9222
+      # Web GUI client port
+      - 6080:80
+    environment:
+      - VNC_PASSWORD=12345
+      - HTTP_PASSWORD=12345
+      - USER=sandbox
+      - PASSWORD=12345
