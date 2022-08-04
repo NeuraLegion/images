@@ -3,6 +3,7 @@ FROM dorowu/ubuntu-desktop-lxde-vnc:bionic-lxqt
 EXPOSE 9222
 
 ADD ./run_chromium.sh /opt/run_chromium.sh
+RUN chmod +x /opt/run_chromium.sh
 
 RUN apt-get update \
     # https://github.com/phusion/baseimage-docker/issues/319
@@ -12,6 +13,9 @@ RUN apt-get update \
         net-tools \
         dumb-init \
         fontconfig \
+        tmux \
         chromium-browser=${VERSION}\* \
         curl \
     && rm -rf /var/lib/apt/lists/* \
+
+ENV RD_PORT=9222
