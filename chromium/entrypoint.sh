@@ -22,7 +22,7 @@ fi
   --disable-translate \
   --disable-ipc-flooding-protection \
   --disable-component-update \
-  --headless \
+  --headless=chrome \
   --hide-scrollbars \
   --ignore-certificate-errors \
   --ignore-certificate-errors-spki-list \
