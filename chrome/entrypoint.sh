@@ -4,6 +4,9 @@ if [ "$(ls -A /home/chrome/.fonts/)" ]; then
   fc-cache -f -v
 fi
 
+ip=$(hostname --ip-address)
+socat tcp-listen:9222,bind="$ip",fork tcp:127.0.0.1:$RD_PORT &
+
 (ulimit -n 65000 || true) && (ulimit -p 65000 || true) && google-chrome-stable \
   --enable-automation \
   --disable-background-networking \
@@ -37,7 +40,6 @@ fi
   --no-first-run \
   --no-sandbox \
   --no-default-browser-check \
-  --remote-debugging-address=0.0.0.0 \
   --remote-debugging-port="$RD_PORT" \
   --safebrowsing-disable-auto-update \
   --user-data-dir=/home/chrome/ \

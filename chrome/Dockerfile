@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 ARG VERSION
 ARG DEBIAN_FRONTEND=noninteractive
-ENV RD_PORT=9222
+ENV RD_PORT=9223
 
 RUN apt-get update \
     # https://github.com/phusion/baseimage-docker/issues/319
