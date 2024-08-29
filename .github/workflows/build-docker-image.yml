@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: neuralegion/devops
+    container: brightsec/devops:aws_docker
 
     strategy:
       matrix:
@@ -44,7 +44,7 @@ jobs:
         run: docker push neuralegion/nextools-${{ matrix.package }}
 
       - name: Login in ECR
-        run: eval $(aws ecr get-login --no-include-email)
+        run: aws ecr get-login-password --region ${{ vars.AWS_DEFAULT_REGION }} | docker login --username AWS --password-stdin 454884832027.dkr.ecr.${{ vars.AWS_DEFAULT_REGION }}.amazonaws.com
 
       - name: Push Docker image to AWS ECR
         run: docker push 454884832027.dkr.ecr.us-east-1.amazonaws.com/nextools-${{ matrix.package }}
